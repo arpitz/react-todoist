@@ -643,6 +643,10 @@
    
      &__list li {
        @include task-item();
+
+       span:first-of-type {
+        margin-right: 10px;
+       }
    
        div:nth-child(1) {
          padding: 10px;
