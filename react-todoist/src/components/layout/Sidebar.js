@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FaInbox, FaRegCalendar, FaRegCalendarAlt, FaChevronDown } from 'react-icons/fa'
 import { useSelectedProjectValue } from '../../context'
 import { Projects } from '../Projects';
+import { AddProject } from '../AddProject';
 
 export const Sidebar = () => {
 
@@ -13,31 +14,51 @@ export const Sidebar = () => {
     <div className="sidebar" data-testid="sidebar">
       {/* Using BEM here in classes, Block Element Modifier */}
       <ul className="sidebar__generic">
-        <li>
+        <li data-testid="inbox"
+          className={active === 'inbox' ? 'active' : ''}
+          onClick={() => {
+            setActive('inbox');
+            setSelectedProject('INBOX');
+          }}
+        >
           <span>
             <FaInbox />
           </span>
           <span>Inbox</span>
         </li>
-        <li>
-        <span>
+        <li data-testid="today"
+          className={active === 'today' ? 'active' : ''}
+          onClick={() => {
+            setActive('today');
+            setSelectedProject('TODAY');
+          }}
+        >
+          <span>
             <FaRegCalendar />
           </span>
           <span>Today</span>
         </li>
-        <li>
-        <span>
+        <li data-testid="next_7"
+          className={active === 'next_7' ? 'active' : ''}
+          onClick={() => {
+            setActive('next_7');
+            setSelectedProject('NEXT_7');
+          }}
+        >
+          <span>
             <FaRegCalendarAlt />
           </span>
           <span>Next 7 Days</span>
         </li>
       </ul>
-      <div className="sidebar__middle">
-        <span><FaChevronDown /></span>
+      <div className="sidebar__middle" onClick={() => setShowProjects(!showProjects)}>
+        <span>
+          <FaChevronDown className={!showProjects ? 'hidden-projects' : ''} />
+          </span>
         <h2>Projects</h2>
       </div>
-      <ul className="sidebar__projects">Projects will be here!</ul>
-        <Projects />
+        <ul className="sidebar__projects">{ showProjects && <Projects/>}</ul>
+      {showProjects && <AddProject />}
     </div>
   )
 }

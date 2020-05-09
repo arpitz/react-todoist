@@ -275,18 +275,18 @@
      &__project {
        cursor: pointer;
    
-       div:nth-child(1) {
-         padding: 5px 0;
-         padding-left: 10px;
-         padding-right: 15px;
-         width: 100%;
-         display: -webkit-box;
-         display: -ms-flexbox;
-         display: flex;
-         -webkit-box-align: center;
-             -ms-flex-align: center;
-                 align-items: center;
-       }
+      //  div:nth-child(1) {
+      //    padding: 5px 0;
+      //    padding-left: 10px;
+      //    padding-right: 15px;
+      //    width: 100%;
+      //    display: -webkit-box;
+      //    display: -ms-flexbox;
+      //    display: flex;
+      //    -webkit-box-align: center;
+      //        -ms-flex-align: center;
+      //            align-items: center;
+      //  }
    
        &-delete {
          margin-left: auto;
@@ -381,32 +381,31 @@
          cursor: pointer;
          line-height: 1.50;
          font-size: 15px;
-         padding-left: 0;
-         padding-right: 0;
+         padding: 5px 15px 5px 10px;
+
+        //  div:nth-child(1) {
+        //    display: -webkit-box;
+        //    display: -ms-flexbox;
+        //    display: flex;
+        //    padding: 10px 0 10px 10px;
+        //    width: 100%;
    
-         div:nth-child(1) {
-           display: -webkit-box;
-           display: -ms-flexbox;
-           display: flex;
-           padding: 10px 0 10px 10px;
-           width: 100%;
-   
-           span:first-of-type {
-             margin-right: 10px;
-             display: -webkit-box;
-             display: -ms-flexbox;
-             display: flex;
-             -webkit-box-align: center;
-                 -ms-flex-align: center;
-                     align-items: center;
-   
-             svg {
-               width: 18px;
-               height: 18px;
-               color: #555;
-             }
-           }
-         }
+          span:first-of-type {
+            margin-right: 10px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+  
+            svg {
+              width: 18px;
+              height: 18px;
+              color: #555;
+            }
+          }
+         //}
    
          &.active, &:hover {
            font-weight: bold;
