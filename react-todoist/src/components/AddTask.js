@@ -74,7 +74,7 @@ export const AddTask = ({ showAddTaskMain = true,
 
       {
         (showMain || showQuickAddTask) && (
-          <div className="  add-task__main"
+          <div className="add-task__main"
             data-testid="add-task-main"
           >
             {
