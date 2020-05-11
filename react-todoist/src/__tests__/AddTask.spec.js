@@ -12,7 +12,6 @@ jest.mock('../context', () => ({
   useProjectsValue: jest.fn(() => ({ projects: [] }))
 }))
 
-
 jest.mock('../firebase', () => ({
   firebase: {
     firestore: jest.fn(() => ({
