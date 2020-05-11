@@ -29,7 +29,7 @@ export const AddProject = ({ shouldShow = false }) => {
     <div className="add-project" data-testid='add-project'>
       {
         show && (
-          <div className='add-project__input'>
+          <div className='add-project__input' data-testid='add-project-inner'>
             <input type="text" value={projectName} onChange={(e) => setProjectName(e.target.value)}
               className="add-project__name"
               data-testid="project-name"
