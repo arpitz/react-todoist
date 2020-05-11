@@ -30,6 +30,11 @@ jest.mock('../hooks', () => ({
 }))
 
 describe('<Tasks />', () => {
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  })
+  
   it('renders the Tasks component', () => {
     const {queryByTestId} = render(<Tasks />);
     expect(queryByTestId('tasks')).toBeTruthy();
