@@ -181,7 +181,7 @@ describe('<AddTask />', () => {
     expect(setShowQuickAddTask).toHaveBeenCalled();
   });
 
-  it('renders the <AddTask /> and adds a task to TODAY and clears state ', () => {
+  it('renders the <AddTask /> and adds a task to TODAY', () => {
     useSelectedProjectValue.mockImplementation(() => ({
       selectedProject: 'TODAY'
     }))
@@ -233,7 +233,7 @@ describe('<AddTask />', () => {
     expect(setShowQuickAddTask).toHaveBeenCalled();
   });
 
-  it('renders the add task and adds a task with task date', () => {
+  it('renders the add task and adds a task with task date of TODAY', () => {
     useSelectedProjectValue.mockImplementation(() => ({
       selectedProject: '1'
     }));
@@ -254,6 +254,51 @@ describe('<AddTask />', () => {
     expect(queryByTestId('task-date-overlay')).toBeFalsy();
 
     fireEvent.click(queryByTestId('add-task'));
+  });
 
+  it('renders the add task and adds a task with task date of TOMORROW', () => {
+    useSelectedProjectValue.mockImplementation(() => ({
+      selectedProject: '1'
+    }));
+
+    const { queryByTestId } = render(
+      <AddTask showAddTaskMain />);
+    fireEvent.click(queryByTestId('show-main-action'));
+    expect(queryByTestId('add-task-content')).toBeTruthy();
+
+    fireEvent.change(queryByTestId('add-task-content'), {
+      target: {value: 'I am a new task and I am amazing!'}
+    });
+
+    fireEvent.click(queryByTestId('show-task-date-overlay'));
+    expect(queryByTestId('task-date-overlay')).toBeTruthy();
+
+    fireEvent.click(queryByTestId('task-date-tomorrow'));
+    expect(queryByTestId('task-date-overlay')).toBeFalsy();
+
+    fireEvent.click(queryByTestId('add-task'));
+  });
+
+  it('renders the add task and adds a task with task date of NEXT WEEK', () => {
+    useSelectedProjectValue.mockImplementation(() => ({
+      selectedProject: '1'
+    }));
+
+    const { queryByTestId } = render(
+      <AddTask showAddTaskMain />);
+    fireEvent.click(queryByTestId('show-main-action'));
+    expect(queryByTestId('add-task-content')).toBeTruthy();
+
+    fireEvent.change(queryByTestId('add-task-content'), {
+      target: {value: 'I am a new task and I am amazing!'}
+    });
+
+    fireEvent.click(queryByTestId('show-task-date-overlay'));
+    expect(queryByTestId('task-date-overlay')).toBeTruthy();
+
+    fireEvent.click(queryByTestId('task-date-next-week'));
+    expect(queryByTestId('task-date-overlay')).toBeFalsy();
+
+    fireEvent.click(queryByTestId('add-task'));
   });
 })
